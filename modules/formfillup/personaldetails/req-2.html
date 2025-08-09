@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recruitment Form</title>
+  <link href="../../../public/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../../../public/assets/css/bootstrap-icons.css" rel="stylesheet" />
+  <link href="../../../public/assets/css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../public/assets/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="./req-2.css">
+</head>
+<body>
+  <div class="container-fluid px-3">
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="d-flex" style="display:none !important;">
+      <div class="text-center">
+        <div class="spinner-border text-primary mb-3" role="status"></div>
+        <div class="fw-bold text-primary">Please wait, uploading...</div>
+      </div>
+    </div>
+
+  <header class="container-fluid bg-transparent py-2 ps-2 g-0">
+  <div class="row align-items-center justify-content-center flex-sm-row flex-md-row flex-row">
+    <!-- Logo -->
+    <div class="col-auto d-flex align-items-center justify-content-center mb-2 mb-sm-0 pe-2">
+      <img src="/public/assets/img/logo1.png" alt="Mendine Logo" class="img-fluid" style="max-height: 38px;">
+    </div>
+
+    <!-- Header Text -->
+    <div class="col d-flex align-items-center align-items-sm-start  justify-content-start">
+      <h2 class="mb-0 fw-semibold portal-heading">RECRUITMENT PORTAL</h2>
+    </div>
+  </div>
+</header>
+
+    <!-- Stepper -->
+    <div class="status-stepper my-3" data-status="progress">
+      <div class="status-step status-pending">
+        <div class="status-circle"><i class="bi bi-clock"></i></div>
+        <div class="status-label">Pending</div>
+      </div>
+      <div class="status-step status-progress active">
+        <div class="status-circle"><i class="bi bi-arrow-repeat"></i></div>
+        <div class="status-label">In Progress</div>
+      </div>
+      <div class="status-step status-review">
+        <div class="status-circle"><i class="bi bi-eye"></i></div>
+        <div class="status-label">Under Review</div>
+      </div>
+      <div class="status-step status-shortlisted">
+        <div class="status-circle"><i class="bi bi-clipboard-check"></i></div>
+        <div class="status-label">Shortlisted</div>
+      </div>
+      <div class="status-step status-rejected">
+        <div class="status-circle"><i class="bi bi-x-circle"></i></div>
+        <div class="status-label">Rejected</div>
+      </div>
+      <div class="status-step status-approved">
+        <div class="status-circle"><i class="bi bi-check-circle"></i></div>
+        <div class="status-label">Approved</div>
+      </div>
+      <div class="status-step status-hold">
+        <div class="status-circle"><i class="bi bi-hourglass-split"></i></div>
+        <div class="status-label">On Hold</div>
+      </div>
+      <div class="status-step status-completed">
+        <div class="status-circle"><i class="bi bi-check2-square"></i></div>
+        <div class="status-label">Completed</div>
+      </div>
+    </div>
+
+    <!-- Main Form -->
+    <div class="row align-items-stretch">
+      <!-- Personal Info -->
+      <div class="col-md-4 mb-3">
+        <div class="card p-3 h-100">
+          <h6 class="fw-bold mb-3 text-center">Personal Details</h6>
+          <div class="d-flex justify-content-center mb-3">
+            <div class="position-relative">
+              <img src="/public/assets/img/profile-pic.jpg" id="profilePreview" class="rounded-circle border" style="width: 100px; height: 100px; object-fit: cover;" alt="Profile Photo" />
+              <label for="profilePhoto" class="position-absolute bottom-0 end-0 bg-light p-1 rounded-circle" style="cursor:pointer;">
+                <i class="bi bi-pencil-fill text-primary"></i>
+              </label>
+            </div>
+          </div>
+          <input type="file" id="profilePhoto" class="form-control d-none" accept="image/*" onchange="previewProfilePhoto(this)" />
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-control mb-3" placeholder="Enter your email" />
+          <label class="form-label">Phone Number</label>
+          <input type="text" class="form-control mb-3" placeholder="Enter phone number" />
+          <label class="form-label">Business ID</label>
+          <input type="text" class="form-control" placeholder="Enter Business ID" />
+        </div>
+      </div>
+
+      <!-- Form Toggle Section -->
+      <div class="col-md-8 mb-3">
+        <div class="card p-3 h-100">
+          <div class="d-flex justify-content-end mb-3">
+            <div class="btn-group" role="group">
+              <input type="radio" class="btn-check" name="sectionToggle" id="btnAddress" autocomplete="off" checked onchange="showAddressSection()">
+              <label class="btn btn-outline-primary me-2" for="btnAddress">Address</label>
+              <input type="radio" class="btn-check" name="sectionToggle" id="btnOther" autocomplete="off" onchange="showOtherDetailsSection()">
+              <label class="btn btn-outline-primary" for="btnOther">Other Details</label>
+            </div>
+          </div>
+
+          <!-- Address Section -->
+          <div id="addressSection">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="card p-3 h-100">
+                  <h6 class="fw-bold text-primary mb-3">Current Address</h6>
+                  <textarea class="form-control mb-2" id="currLine1" placeholder="Address Line 1 *"></textarea>
+                  <textarea class="form-control mb-2" id="currLine2" placeholder="Address Line 2"></textarea>
+                  <div class="row">
+                    <div class="col-6 mb-2"><input class="form-control" id="currCity" placeholder="City *"></div>
+                    <div class="col-6 mb-2"><input class="form-control" id="currPost" placeholder="Post Office"></div>
+                    <div class="col-6 mb-2"><input class="form-control" id="currPin" placeholder="Pin Code *"></div>
+                    <div class="col-6 mb-2"><input class="form-control" id="currDistrict" placeholder="District *"></div>
+                    <div class="col-6 mb-2"><input class="form-control" id="currState" placeholder="State *"></div>
+                    <div class="col-6 mb-2"><input class="form-control" id="currCountry" placeholder="Country *"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="card p-3 h-100">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h6 class="fw-bold text-primary mb-0">Permanent Address</h6>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="sameAsCurrent" onchange="copyCurrentToPermanent()">
+                      <label class="form-check-label" for="sameAsCurrent">Same as Current</label>
+                    </div>
+                  </div>
+                  <textarea class="form-control mb-2" id="permLine1" placeholder="Address Line 1 *"></textarea>
+                  <textarea class="form-control mb-2" id="permLine2" placeholder="Address Line 2"></textarea>
+                  <div class="row">
+                    <div class="col-6 mb-2"><input class="form-control" id="permCity" placeholder="City *"></div>
+                    <div class="col-6 mb-2"><input class="form-control" id="permPost" placeholder="Post Office"></div>
+                    <div class="col-6 mb-2"><input class="form-control" id="permPin" placeholder="Pin Code *"></div>
+                    <div class="col-6 mb-2"><input class="form-control" id="permDistrict" placeholder="District *"></div>
+                    <div class="col-6 mb-2"><input class="form-control" id="permState" placeholder="State *"></div>
+                    <div class="col-6 mb-2"><input class="form-control" id="permCountry" placeholder="Country *"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Other Details Section -->
+          <div id="otherDetailsSection" style="display:none;">
+            <div class="card p-3 h-100">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                
+                <label class="form-label">Gender</label>
+                <select class="form-select">
+                  <option>Select</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Nationality</label>
+                <select class="form-select">
+                  <option>Select</option>
+                  <option>Indian</option>
+                  <option>American</option>
+                  <option>British</option>
+                  <option>Canadian</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Marital Status</label>
+                <select class="form-select">
+                  <option>Select</option>
+                  <option>Single</option>
+                  <option>Married</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Religion</label>
+                <select class="form-select">
+                  <option>Select</option>
+                  <option>Hindu</option>
+                  <option>Muslim</option>
+                  <option>Christian</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Willing to Relocate?</label>
+                <select class="form-select">
+                  <option>Select</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="col-md-4 mb-3 px-0">
+                <label class="form-label">Social Media</label>
+                <select class="form-select">
+                  <option>Select</option>
+                  <option>LinkedIn</option>
+                  <option>Twitter</option>
+                </select>
+              </div>
+              <div class="col-md-8 mb-3">
+                <label class="form-label">Profile Link</label>
+                <div class="d-flex gap-2">
+                  <input type="text" class="form-control" placeholder="Enter profile link" />
+                  <button class="btn btn-outline-primary btn-sm">Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+    <!-- Buttons -->
+    <div class="text-end pb-4">
+      <button class="btn btn-outline-primary px-4 me-2"><i class="bi bi-save me-2"></i>Save</button>
+      <button class="btn btn-primary px-4">Next <i class="bi bi-chevron-right ms-2"></i></button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../../public/assets/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function previewProfilePhoto(input) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          document.getElementById('profilePreview').src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    function copyCurrentToPermanent() {
+      const fields = ["Line1", "Line2", "City", "Post", "Pin", "District", "State", "Country"];
+      const isChecked = document.getElementById("sameAsCurrent").checked;
+      fields.forEach(field => {
+        const current = document.getElementById("curr" + field);
+        const permanent = document.getElementById("perm" + field);
+        if (isChecked) {
+          permanent.value = current.value;
+          permanent.disabled = true;
+        } else {
+          permanent.value = "";
+          permanent.disabled = false;
+        }
+      });
+    }
+
+    function showAddressSection() {
+      document.getElementById("addressSection").style.display = "block";
+      document.getElementById("otherDetailsSection").style.display = "none";
+    }
+
+    function showOtherDetailsSection() {
+      document.getElementById("addressSection").style.display = "none";
+      document.getElementById("otherDetailsSection").style.display = "block";
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const stepper = document.querySelector('.status-stepper');
+      const activeStatus = stepper?.getAttribute('data-status');
+      if (activeStatus) {
+        const steps = stepper.querySelectorAll('.status-step');
+        let foundActive = false;
+        steps.forEach(step => {
+          const classList = Array.from(step.classList);
+          const statusClass = classList.find(cls => cls.startsWith('status-') && cls !== 'status-step');
+          if (statusClass === `status-${activeStatus}`) {
+            step.classList.add('active');
+            foundActive = true;
+          } else if (foundActive) {
+            step.classList.remove('done');
+          } else {
+            step.classList.add('done');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

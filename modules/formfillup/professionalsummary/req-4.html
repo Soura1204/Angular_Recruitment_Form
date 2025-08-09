@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recruitment Form</title>
+  <link href="../../../public/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../../../public/assets/css/bootstrap-icons.css" rel="stylesheet" />
+  <link href="../../../public/assets/css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../public/assets/css/dataTables.bootstrap5.min.css">
+</head>
+<body>
+   <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="d-flex" style="display:none !important;">
+      <div class="text-center">
+        <div class="spinner-border text-primary mb-3" role="status"></div>
+        <div class="fw-bold text-primary">Please wait, uploading...</div>
+      </div>
+    </div>
+  <div class="container-fluid">
+  <!-- Header -->
+  <header class="container-fluid bg-transparent py-2 ps-2 g-0">
+  <div class="row align-items-center justify-content-center flex-sm-row flex-md-row flex-row">
+    <!-- Logo -->
+    <div class="col-auto d-flex align-items-center justify-content-center mb-2 mb-sm-0 pe-2">
+      <img src="/public/assets/img/logo1.png" alt="Mendine Logo" class="img-fluid" style="max-height: 38px;">
+    </div>
+
+    <!-- Header Text -->
+    <div class="col d-flex align-items-center align-items-sm-start  justify-content-start">
+      <h2 class="mb-0 fw-semibold portal-heading">RECRUITMENT PORTAL</h2>
+    </div>
+  </div>
+</header>
+
+   <!-- Stepper -->
+    <div class="status-stepper my-3" data-status="progress">
+      <div class="status-step status-pending">
+        <div class="status-circle"><i class="bi bi-clock"></i></div>
+        <div class="status-label">Pending</div>
+      </div>
+      <div class="status-step status-progress active">
+        <div class="status-circle"><i class="bi bi-arrow-repeat"></i></div>
+        <div class="status-label">In Progress</div>
+      </div>
+      <div class="status-step status-review">
+        <div class="status-circle"><i class="bi bi-eye"></i></div>
+        <div class="status-label">Under Review</div>
+      </div>
+      <div class="status-step status-shortlisted">
+        <div class="status-circle"><i class="bi bi-clipboard-check"></i></div>
+        <div class="status-label">Shortlisted</div>
+      </div>
+      <div class="status-step status-rejected">
+        <div class="status-circle"><i class="bi bi-x-circle"></i></div>
+        <div class="status-label">Rejected</div>
+      </div>
+      <div class="status-step status-approved">
+        <div class="status-circle"><i class="bi bi-check-circle"></i></div>
+        <div class="status-label">Approved</div>
+      </div>
+      <div class="status-step status-hold">
+        <div class="status-circle"><i class="bi bi-hourglass-split"></i></div>
+        <div class="status-label">On Hold</div>
+      </div>
+      <div class="status-step status-completed">
+        <div class="status-circle"><i class="bi bi-check2-square"></i></div>
+        <div class="status-label">Completed</div>
+      </div>
+    </div>
+
+  <!-- Main Form -->
+  <div class="row g-3">
+   <!-- Left Column: Personal Details -->
+<div class="col-md-3">
+ <div class="card p-3 h-100 text-center shadow-sm rounded-3">
+  <h6 class="fw-bold mb-3">Personal Details</h6>
+
+  <!-- Profile Image -->
+  <div class="d-flex justify-content-center mb-3">
+    <div class="position-relative">
+      <img src="/public/assets/img/profile-pic.jpg" id="profilePreview" class="rounded-circle border" 
+           style="width: 100px; height: 100px; object-fit: cover;" alt="Profile Photo" />
+      <label for="profilePhoto" class="position-absolute bottom-0 end-0 bg-light p-1 rounded-circle shadow-sm" 
+             style="cursor:pointer;">
+        <i class="bi bi-pencil-fill text-primary"></i>
+      </label>
+    </div>
+  </div>
+  <input type="file" id="profilePhoto" class="form-control d-none" accept="image/*" onchange="previewProfilePhoto(this)" />
+
+  <!-- Contact Info -->
+  <div class="text-start mx-auto" style="max-width: 220px;">
+    <div class="d-flex align-items-center mb-2">
+      <i class="bi bi-telephone-fill me-2 text-primary"></i>
+      <span>(123) 456-7890</span>
+    </div>
+    <div class="d-flex align-items-center mb-2">
+      <i class="bi bi-envelope-fill me-2 text-primary"></i>
+      <span>hello@brand.com</span>
+    </div>
+    <div class="d-flex align-items-center">
+      <i class="bi bi-card-heading me-2 text-primary"></i>
+      <span>Business ID: 1234-ABC</span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+    <!-- Right Column: Family & Language Details -->
+    <div class="col-md-9">
+      <div class="card p-3 h-100">
+        <!-- Family Details -->
+        <div class="mb-3">
+          <div class="fw-bold text-primary mb-2">Professional Summary</div>
+           <textarea 
+      class="form-control" 
+      id="professionalSummary" 
+      rows="10" 
+      placeholder="Write a brief professional summary here..." style="min-height: 250px;"
+    ></textarea>
+        
+
+        </div>
+    <div class="text-start">
+<button class="btn btn-outline-primary btn-sm px-3 me-2">
+  <i class="bi bi-pencil-square me-1"></i>Edit
+</button>
+            </div>
+      </div>
+
+      
+  </div>
+  <!-- Buttons -->
+      <div class="text-end py-2">
+        <button class="btn btn-outline-primary btn-sm px-3 me-2"><i class="bi bi-save me-1"></i>Save</button>
+        <button class="btn btn-primary btn-sm px-3">Next <i class="bi bi-chevron-right ms-1"></i></button>
+      </div>
+    </div>
+</div>
+
+ 
+
+  <!-- Scripts -->
+  <script src="../../../public/assets/js/bootstrap.bundle.min.js"></script>
+ 
+</body>
+</html>
